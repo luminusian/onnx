@@ -67,6 +67,8 @@ We'll end up with a dictionary of lists of names per language,
 from __future__ import unicode_literals, print_function, division
 from io import open
 import glob
+import torch.onnx
+
 
 def findFiles(path): return glob.glob(path)
 
@@ -232,6 +234,10 @@ output, next_hidden = rnn(input, hidden)
 
 input = Variable(lineToTensor('Albert'))
 hidden = Variable(torch.zeros(1, n_hidden))
+
+
+torch.onnx.export(rnn, [input, hidden], "adam.proto", verbose=True)
+
 
 output, next_hidden = rnn(input[0], hidden)
 print(output)
