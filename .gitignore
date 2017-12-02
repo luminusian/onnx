@@ -139,3 +139,5 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+### char_rnn_classification_tutorial
+data.zip
